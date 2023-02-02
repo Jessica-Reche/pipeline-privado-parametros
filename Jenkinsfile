@@ -10,7 +10,7 @@ pipeline {
         stage('Execution') {
             steps {
                 sh 'npm install'
-                sh 'npm start ${params.persona_a_saludar}'
+                sh 'node index.js ${params.persona_a_saludar}'
             }
         }
     }
