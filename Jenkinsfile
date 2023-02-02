@@ -6,6 +6,9 @@ pipeline {
     parameters {
         string(name: 'persona_a_saludar', defaultValue: 'Mundo', description: 'Nombre de la persona a saludar')
     }
+    triggers {
+        pollSCM('H */5 * * *')
+    }
     stages {
         stage('Execution') {
             steps {
@@ -14,16 +17,16 @@ pipeline {
             }
         }
      
-         stage('Pararell stages') {
+         stage('Parallel stages') {
             parallel {
-                stage('Primer stage paralelo') {
+                stage('First parallel stage') {
                     steps {
-                        echo 'Este es el primer stage paralelo'
+                        echo 'This is the first parallel stage'
                     }
                 }
-                stage('Segundo stage paralelo') {
+                stage('Second parallel stage') {
                     steps {
-                        echo 'Este es el segundo stage paralelo'
+                        echo 'This is the second parallel stage'
                     }
                 }
             }
