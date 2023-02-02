@@ -14,7 +14,7 @@ pipeline {
             }
         }
      
-         stage('Pararell stages') {|
+         stage('Pararell stages') {
             parallel {
                 stage('Primer stage paralelo') {
                     steps {
@@ -27,10 +27,6 @@ pipeline {
                     }
                 }
             }
-
-
          }
-        
     }
-  
 }
