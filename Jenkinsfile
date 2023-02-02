@@ -7,7 +7,7 @@ pipeline {
         string(name: 'persona_a_saludar', defaultValue: 'Mundo', description: 'Nombre de la persona a saludar')
     }
     triggers {
-        pollSCM('H */5 * * *')
+        pollSCM('*/5 * * * * ')
     }
     stages {
         stage('Execution') {
