@@ -1,6 +1,7 @@
-const persona_a_saludar = process.argv[2];
-if (!persona_a_saludar) {
-  console.error('Falta el nombre de la persona a saludar');
-  process.exit(1);
-}
-console.log(`Hola amig@ ${persona_a_saludar}`);
+//Recibimos los parámetros
+const persona_a_saludar = process.argv.slice(2);
+//Imprimimos el nombre
+console.log(`Hola amig@s${persona_a_saludar[0]}`);
+
+
+
