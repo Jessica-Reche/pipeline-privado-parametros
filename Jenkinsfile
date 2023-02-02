@@ -13,5 +13,24 @@ pipeline {
                 sh "node index.js ${params.persona_a_saludar}"
             }
         }
+     
+         stage('Pararell stages') {|
+            parallel {
+                stage('Primer stage paralelo') {
+                    steps {
+                        echo 'Este es el primer stage paralelo'
+                    }
+                }
+                stage('Segundo stage paralelo') {
+                    steps {
+                        echo 'Este es el segundo stage paralelo'
+                    }
+                }
+            }
+
+
+         }
+        
     }
+  
 }
