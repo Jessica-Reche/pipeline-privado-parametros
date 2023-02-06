@@ -16,20 +16,20 @@ pipeline {
         stage('Script 1') {
             steps {
                 sh 'npm install'
-                sh "./jenkinsScripts/script1.js${params.SCRIPT1_RESULT}"
+                sh "./jenkinsScripts/script-1.js${params.SCRIPT1_RESULT}"
                
             }
         }
      
         stage('Script 2') {
             steps {
-                sh "./jenkinsScripts/script2.js${params.SCRIPT2_RESULT}"
+                sh "./jenkinsScripts/script-2.js${params.SCRIPT2_RESULT}"
              
             }
         }
         stage('Script 3') {
             steps {
-                sh "./jenkinsScripts/script3.js"
+                sh "./jenkinsScripts/script-3.js"
             }
         }
     }
