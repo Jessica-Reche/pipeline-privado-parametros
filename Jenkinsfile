@@ -16,21 +16,21 @@ pipeline {
         stage('Script 1') {
             steps {
                 sh 'npm install'
-                sh "node ./jenkinsScripts/script-1.js ${params.SCRIPT1_RESULT}"
+                sh "node ./jenkinsScripts/script-1.js ${params.SCRIPT1_RESULT}" errorUnstable true
                
             }
         }
      
         stage('Script 2') {
             steps {
-                sh "node ./jenkinsScripts/script-2.js ${params.SCRIPT2_RESULT}"
+                sh "node ./jenkinsScripts/script-2.js ${params.SCRIPT2_RESULT}" errorUnstable true
              
             }
         }
         stage('Script 3') {
             steps {
 
-                sh "node ./jenkinsScripts/script-3.js"
+                sh "node ./jenkinsScripts/script-3.js" errorUnstable true
             }
         }
     }
