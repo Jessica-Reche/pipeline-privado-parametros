@@ -18,7 +18,7 @@ pipeline {
                 sh 'npm install'
                 try {
                     sh "node ./jenkinsScripts/script-1.js ${params.SCRIPT1_RESULT}"
-                } catch (e) {
+                } catch (Exception e) {
                     echo "Result: ${e}"
                 }
               
@@ -30,7 +30,7 @@ pipeline {
             steps {
                 try {
                     sh "node ./jenkinsScripts/script-2.js ${params.SCRIPT2_RESULT}"
-                } catch (e) {
+                } catch (Exception e) {
                     echo "Result: ${e}"
                 }
                
@@ -41,7 +41,7 @@ pipeline {
             steps {
                try {
                     sh "node ./jenkinsScripts/script-3.js"
-                } catch (e) {
+                } catch (Exception e) {
                     echo "Result: ${e}"
                 }     
                
