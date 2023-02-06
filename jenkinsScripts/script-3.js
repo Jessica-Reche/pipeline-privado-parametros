@@ -11,7 +11,8 @@ if (script1 === 'correcto' && script2 === 'correcto') {
   console.error(script1, script2);
   process.exit(1);
 } else {
-  console.log('Algún script ha fallado');
   console.log('variables: ',script1, script2);
+  console.log('Algún script ha fallado');
+  
   process.exit(1);
 }
