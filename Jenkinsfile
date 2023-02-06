@@ -4,32 +4,29 @@ pipeline {
         nodejs 'nodejs'
     }
     parameters {
-        string(name: 'persona_a_saludar', defaultValue: 'Mundo', description: 'Nombre de la persona a saludar')
+        string(estado: 'SCRIPT1_RESULT', defaultValue: 'correcto', description: 'Ingrese correcto o incorrecto')
+        string(estado: 'SCRIPT2_RESULT', defaultValue: 'incorrecto', description: 'Ingrese correcto o incorrecto')
     }
-    triggers {
-        pollSCM('*/5 * * * * ')
-    }
+ 
     stages {
-        stage('Execution') {
+        stage('Script 1') {
             steps {
                 sh 'npm install'
-                sh "node index.js ${params.persona_a_saludar}"
+                sh "./jenkinsScripts/script1.js${params.SCRIPT1_RESULT}"
+                env.SCRIPT1_RESULT = params.SCRIPT1_RESULT
             }
         }
      
-         stage('Parallel stages') {
-            parallel {
-                stage('First parallel stage') {
-                    steps {
-                        echo 'This is the first parallel stage'
-                    }
-                }
-                stage('Second parallel stage') {
-                    steps {
-                        echo 'This is the second parallel stage'
-                    }
-                }
+        stage('Script 2') {
+            steps {
+                sh "./jenkinsScripts/script2.js${params.SCRIPT2_RESULT}"
+                env.SCRIPT2_RESULT = params.SCRIPT2_RESULT
             }
-         }
+        }
+        stage('Script 3') {
+            steps {
+                sh "./jenkinsScripts/script3.js"
+            }
+        }
     }
 }
