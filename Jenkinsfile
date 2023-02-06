@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    options {
+      ignoreException()
+    }
     tools {
         nodejs 'nodejs'
     }
@@ -31,10 +34,5 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            echo "Excepciones ignoradas durante la ejecución de los stages"
-            ignoreException()
-        }
-    }
+   
 }
