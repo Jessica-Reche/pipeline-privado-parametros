@@ -1,7 +1,9 @@
 pipeline {
     agent any
     options {
-      ignoreException()
+       //aunque falle algun stage continua con el resto
+        skipDefaultCheckout()
+
     }
     tools {
         nodejs 'nodejs'
@@ -19,20 +21,40 @@ pipeline {
         stage('Script 1') {
             steps {
                 sh 'npm install'
-                sh "node ./jenkinsScripts/script-1.js ${params.SCRIPT1_RESULT}"
+                script {
+                    try {
+                        sh "node ./jenkinsScripts/script-1.js ${params.SCRIPT1_RESULT}"
+                    } catch (Exception e) {
+                        echo "Result: ${e}"
+                     
+                    }
+                }
             }
         }
      
         stage('Script 2') {
             steps {
-                sh "node ./jenkinsScripts/script-2.js ${params.SCRIPT2_RESULT}"
+                script {
+                    try {
+                        sh "node ./jenkinsScripts/script-2.js ${params.SCRIPT2_RESULT}"
+                    } catch (Exception e) {
+                        echo "Result: ${e}"
+                      
+                    }
+                }
             }
         }
         stage('Script 3') {
             steps {
-                sh "node ./jenkinsScripts/script-3.js"
+                script {
+                    try {
+                        sh "node ./jenkinsScripts/script-3.js"
+                    } catch (Exception e) {
+                        echo "Result: ${e}"
+                      
+                    }     
+                }
             }
         }
     }
-   
 }
