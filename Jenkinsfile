@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    options {
-        ignoreExceptions()
-    }
     tools {
         nodejs 'nodejs'
     }
@@ -20,27 +17,24 @@ pipeline {
             steps {
                 sh 'npm install'
                 sh "node ./jenkinsScripts/script-1.js ${params.SCRIPT1_RESULT}"
-                error {
-                    echo "Error in script 1, continuing with next stage"
-                }
             }
         }
      
         stage('Script 2') {
             steps {
                 sh "node ./jenkinsScripts/script-2.js ${params.SCRIPT2_RESULT}"
-                error {
-                    echo "Error in script 2, continuing with next stage"
-                }
             }
         }
         stage('Script 3') {
             steps {
                 sh "node ./jenkinsScripts/script-3.js"
-                error {
-                    echo "Error in script 3, continuing with next stage"
-                }     
             }
+        }
+    }
+    post {
+        always {
+            echo "Excepciones ignoradas durante la ejecución de los stages"
+            ignoreException()
         }
     }
 }
