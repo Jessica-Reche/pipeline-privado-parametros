@@ -1,10 +1,12 @@
 pipeline {
     agent any
     options {
-       //aunque falle algun stage continua con el resto
+       //aunque falle algun stage continua con el resto pero lo marca como fallido
         skipDefaultCheckout()
         disableConcurrentBuilds()
-         failOnError(false)
+        timeout(time: 1, unit: 'HOURS')
+     
+   
 
     }
     tools {
