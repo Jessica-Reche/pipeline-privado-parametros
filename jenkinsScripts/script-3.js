@@ -8,4 +8,3 @@ if (script1 === 'correcto' && script2 === 'correcto') {
 } else {
   console.log('Esto pinta muy mal');
 }
-
