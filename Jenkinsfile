@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    options {
+        ignoreExceptions()
+    }
     tools {
         nodejs 'nodejs'
     }
@@ -16,35 +19,27 @@ pipeline {
         stage('Script 1') {
             steps {
                 sh 'npm install'
-                try {
-                    sh "node ./jenkinsScripts/script-1.js ${params.SCRIPT1_RESULT}"
-                } catch (Exception e) {
-                    echo "Result: ${e}"
+                sh "node ./jenkinsScripts/script-1.js ${params.SCRIPT1_RESULT}"
+                error {
+                    echo "Error in script 1, continuing with next stage"
                 }
-              
-               
             }
         }
      
         stage('Script 2') {
             steps {
-                try {
-                    sh "node ./jenkinsScripts/script-2.js ${params.SCRIPT2_RESULT}"
-                } catch (Exception e) {
-                    echo "Result: ${e}"
+                sh "node ./jenkinsScripts/script-2.js ${params.SCRIPT2_RESULT}"
+                error {
+                    echo "Error in script 2, continuing with next stage"
                 }
-               
-             
             }
         }
         stage('Script 3') {
             steps {
-               try {
-                    sh "node ./jenkinsScripts/script-3.js"
-                } catch (Exception e) {
-                    echo "Result: ${e}"
+                sh "node ./jenkinsScripts/script-3.js"
+                error {
+                    echo "Error in script 3, continuing with next stage"
                 }     
-               
             }
         }
     }
