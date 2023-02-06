@@ -16,21 +16,35 @@ pipeline {
         stage('Script 1') {
             steps {
                 sh 'npm install'
-                sh "node ./jenkinsScripts/script-1.js ${params.SCRIPT1_RESULT}" errorUnstable true
+                try {
+                    sh "node ./jenkinsScripts/script-1.js ${params.SCRIPT1_RESULT}"
+                } catch (e) {
+                    echo "Result: ${e}"
+                }
+              
                
             }
         }
      
         stage('Script 2') {
             steps {
-                sh "node ./jenkinsScripts/script-2.js ${params.SCRIPT2_RESULT}" errorUnstable true
+                try {
+                    sh "node ./jenkinsScripts/script-2.js ${params.SCRIPT2_RESULT}"
+                } catch (e) {
+                    echo "Result: ${e}"
+                }
+               
              
             }
         }
         stage('Script 3') {
             steps {
-
-                sh "node ./jenkinsScripts/script-3.js" errorUnstable true
+               try {
+                    sh "node ./jenkinsScripts/script-3.js"
+                } catch (e) {
+                    echo "Result: ${e}"
+                }     
+               
             }
         }
     }
