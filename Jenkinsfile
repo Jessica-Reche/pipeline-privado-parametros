@@ -26,6 +26,7 @@ pipeline {
                         sh "node ./jenkinsScripts/script-1.js ${params.SCRIPT1_RESULT}"
                     } catch (Exception e) {
                         echo "Result: ${e}"
+                        error "Error en el script 1"
                      
                     }
                 }
@@ -39,6 +40,7 @@ pipeline {
                         sh "node ./jenkinsScripts/script-2.js ${params.SCRIPT2_RESULT}"
                     } catch (Exception e) {
                         echo "Result: ${e}"
+                        error "Error en el script 2"
                       
                     }
                 }
@@ -51,6 +53,7 @@ pipeline {
                         sh "node ./jenkinsScripts/script-3.js"
                     } catch (Exception e) {
                         echo "Result: ${e}"
+                        error "Error en el script 3"
                       
                     }     
                 }
