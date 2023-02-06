@@ -4,8 +4,8 @@ pipeline {
         nodejs 'nodejs'
     }
     parameters {
-        string(estado: 'SCRIPT1_RESULT', defaultValue: 'correcto', description: 'Ingrese correcto o incorrecto')
-        string(estado: 'SCRIPT2_RESULT', defaultValue: 'incorrecto', description: 'Ingrese correcto o incorrecto')
+        string(estado: 'SCRIPT1_RESULT', defaultValue: 'introduce correcto o incorrecto', description: 'Ingrese correcto o incorrecto')
+        string(estado: 'SCRIPT2_RESULT', defaultValue: 'introduce correcto o incorrecto', description: 'Ingrese correcto o incorrecto')
     }
  
     stages {
