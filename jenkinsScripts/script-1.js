@@ -1,9 +1,11 @@
-const script1Result = process.env.SCRIPT1_RESULT;
+const SCRIPT1_RESULT = process.argv[2];
 
-if (script1Result === 'correcto') {
-  console.log('El script 1 ha sido ejecutado correctamente');
+if (SCRIPT1_RESULT === 'correcto') {
+  console.log('Script 1 ha funcionado correctamente');
   process.exit(0);
+ 
 } else {
-  console.error('El script 1 ha fallado');
+  console.error('Script 1 ha fallado');
   process.exit(1);
+  
 }

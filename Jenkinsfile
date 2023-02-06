@@ -17,7 +17,7 @@ pipeline {
         string(name: 'SCRIPT2_RESULT', defaultValue: 'introduce correcto o incorrecto', description: 'Ingrese correcto o incorrecto')
     }
     environment {
-        SCRIPT1_RESULT = "${params.SCRIPT1_RESULT}"
+       SCRIPT1_RESULT = "${params.SCRIPT1_RESULT}"
         SCRIPT2_RESULT = "${params.SCRIPT2_RESULT}"
     }
  

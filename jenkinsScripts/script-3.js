@@ -1,6 +1,6 @@
-//varibles de entorno de Jenkins para el script
-const script1 = process.env.SCRIPT1_RESULT;
-const script2 = process.env.SCRIPT2_RESULT;
+//Cojo las variables de los dos scripts anterior para comprobar si son correctas o no
+var script1 = process.env.SCRIPT1_RESULT;
+var script2 = process.env.SCRIPT1_RESULT;
 
 
 if (script1 === 'correcto' && script2 === 'correcto') {
