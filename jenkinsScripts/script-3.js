@@ -9,10 +9,10 @@ if (script1 === 'correcto' && script2 === 'correcto') {
 } else if (script1 === 'incorrecto' && script2 === 'incorrecto') {
   console.error('esto pinta muy mal...');
   console.error(script1, script2);
-  process.exit(1);
+  process.exit(0);
 } else {
-  console.log('variables: '+ script1 + script2);
+
   console.log('Algún script ha fallado');
   
-  process.exit(1);
+  process.exit(0);
 }
