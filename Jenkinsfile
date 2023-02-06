@@ -16,7 +16,7 @@ pipeline {
         stage('Script 1') {
             steps {
                 sh 'npm install'
-                sh 'chmod +x /jenkinsScripts/script-1.js'
+                sh 'chmod +x ./jenkinsScripts/script-1.js'
                 sh "./jenkinsScripts/script-1.js ${params.SCRIPT1_RESULT}"
                
             }
