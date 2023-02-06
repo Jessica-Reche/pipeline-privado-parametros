@@ -16,6 +16,7 @@ pipeline {
         stage('Script 1') {
             steps {
                 sh 'npm install'
+                sh 'chmod +x script-1.js'
                 sh "./jenkinsScripts/script-1.js ${params.SCRIPT1_RESULT}"
                
             }
@@ -23,12 +24,15 @@ pipeline {
      
         stage('Script 2') {
             steps {
+                 sh 'chmod +x script-2.js'
                 sh "./jenkinsScripts/script-2.js ${params.SCRIPT2_RESULT}"
              
             }
         }
         stage('Script 3') {
             steps {
+
+                sh 'chmod +x script-3.js'
                 sh "./jenkinsScripts/script-3.js"
             }
         }
