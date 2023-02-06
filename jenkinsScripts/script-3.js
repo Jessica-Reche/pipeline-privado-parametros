@@ -7,7 +7,7 @@ if (script1 === 'correcto' && script2 === 'correcto') {
 } else if ((script1 !== 'correcto' || script2 !== 'correcto')&& (script1 === 'correcto' || script2 === 'correcto')) {
   console.log('Alguna de las dos stages ha fallado');
   process.exit(1);
-} else {
+} else if(script1 !== 'correcto' && script2 !== 'correcto'){
   console.log('Esto pinta muy mal');
   process.exit(1);
 }
