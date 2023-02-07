@@ -2,7 +2,8 @@
 var script1 = process.args[2];
 var script2 = process.args[3];
 
-
+console.log('Script 1: ' + script1);
+console.log('Script 2: ' + script2);
 switch (script1) {
   case 'correcto':
     switch (script2) {
@@ -12,6 +13,9 @@ switch (script1) {
         break;
       default:
         console.error('Algún script ha fallado');
+
+        console.log('Script 1: ' + script1);
+        console.log('Script 2: ' + script2);
         process.exit(1);
     }
     break;
@@ -28,5 +32,8 @@ switch (script1) {
     break;
   default:
     console.error('Algún script ha fallado');
+
+    console.log('Script 1: ' + script1);
+    console.log('Script 2: ' + script2);
     process.exit(1);
 }
