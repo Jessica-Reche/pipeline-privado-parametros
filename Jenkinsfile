@@ -12,10 +12,7 @@ pipeline {
         string(name: 'SCRIPT1_RESULT', defaultValue: 'introduce correcto o incorrecto', description: 'Ingrese correcto o incorrecto')
         string(name: 'SCRIPT2_RESULT', defaultValue: 'introduce correcto o incorrecto', description: 'Ingrese correcto o incorrecto')
     }
-    environment {
-        SCRIPT1_RESULT = "${params.SCRIPT1_RESULT}"
-        SCRIPT2_RESULT = "${params.SCRIPT2_RESULT}"
-    }
+   
     stages {
         stage('Script 1') {
             steps {
@@ -42,13 +39,21 @@ pipeline {
                 }
             }
         }
+        //guardar los resultados de los scripts anteriores en un  array que se utilizará en el script 3
+        post {
+            success {
+                script {
+                    env.SCRIPT1_RESULT = sh(returnStdout: true, script: "node ./jenkinsScripts/script-1.js ${params.SCRIPT1_RESULT}")
+                    env.SCRIPT2_RESULT = sh(returnStdout: true, script: "node ./jenkinsScripts/script-2.js ${params.SCRIPT2_RESULT}")
+                }
+            }
+        }
+        //uso de los resultados de los scripts anteriores
         stage('Script 3') {
             steps {
                 script {
                     try {
-                        //se utiliza el resultado de los scripts anteriores para ejecutar el script 3
                         sh "node ./jenkinsScripts/script-3.js ${env.SCRIPT1_RESULT} ${env.SCRIPT2_RESULT}"
-
                     } catch (Exception e) {
                         echo "Script 3: Fallido ${e}"
                         
@@ -56,6 +61,11 @@ pipeline {
                 }
             }
         }
+
+
     }
+
+
+        
    
 }
