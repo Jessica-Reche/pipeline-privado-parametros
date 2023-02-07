@@ -1,9 +1,14 @@
-//Cojo las variables de los dos scripts anterior para comprobar si son correctas o no
-var script1 = process.args[2];
-var script2 = process.args[3];
+if (process.argv.length < 4) {
+  console.error('Error: se esperaban dos argumentos');
+  process.exit(1);
+}
+var script1 = process.argv[2];
+var script2 = process.argv[3];
 
 console.log('Script 1: ' + script1);
 console.log('Script 2: ' + script2);
+
+
 switch (script1) {
   case 'correcto':
     switch (script2) {
@@ -12,10 +17,7 @@ switch (script1) {
         process.exit(0);
         break;
       default:
-        console.log('Algún script ha fallado');
-
-        console.log('Script 1: ' + script1);
-        console.log('Script 2: ' + script2);
+        console.error('Algún script ha fallado');
         process.exit(1);
     }
     break;
@@ -31,9 +33,6 @@ switch (script1) {
     }
     break;
   default:
-    console.log('Algún script ha fallado');
-
-    console.log('Script 1: ' + script1);
-    console.log('Script 2: ' + script2);
+    console.error('Algún script ha fallado');
     process.exit(1);
 }
