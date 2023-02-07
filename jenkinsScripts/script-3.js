@@ -12,7 +12,7 @@ switch (script1) {
         process.exit(0);
         break;
       default:
-        console.error('Algún script ha fallado');
+        console.log('Algún script ha fallado');
 
         console.log('Script 1: ' + script1);
         console.log('Script 2: ' + script2);
@@ -31,7 +31,7 @@ switch (script1) {
     }
     break;
   default:
-    console.error('Algún script ha fallado');
+    console.log('Algún script ha fallado');
 
     console.log('Script 1: ' + script1);
     console.log('Script 2: ' + script2);
