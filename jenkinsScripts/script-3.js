@@ -1,6 +1,6 @@
 //Cojo las variables de los dos scripts anterior para comprobar si son correctas o no
-var script1 = process.env.SCRIPT1_RESULT;
-var script2 = process.env.SCRIPT1_RESULT;
+var script1 = process.args[2];
+var script2 = process.args[3];
 
 
 if (script1 === 'correcto' && script2 === 'correcto') {
